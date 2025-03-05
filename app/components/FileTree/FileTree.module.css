@@ -1,0 +1,16 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  font-size: 28px;
+  width: 400px;
+}
+
+.leaf {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+  justify-content: flex-start;
+}
+.subDirectory {
+  margin-left: 25px;
+}
