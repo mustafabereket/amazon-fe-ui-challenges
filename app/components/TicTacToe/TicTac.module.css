@@ -1,0 +1,23 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+}
+
+.gameGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  margin: auto;
+  gap: 0;
+}
+.block {
+  width: 200px;
+  height: 100px;
+  margin: 0;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 46px;
+}
