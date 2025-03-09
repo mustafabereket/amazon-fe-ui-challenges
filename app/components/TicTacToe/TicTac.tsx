@@ -10,26 +10,35 @@ const TicTac = () => {
     [null, null, null],
     [null, null, null],
   ]);
-  const ifWinner = (board1) => {
-    console.log("Boards", board1);
-    for (let i = 0; i < board1.length; i++) {
-      const temp = board1[i].join("");
-      if (temp.includes("XXX" || "OOO")) {
+
+  const [player, setPlayer] = useState(false);
+  const [msg, setMsg] = useState("Player 1");
+
+  useEffect(() => {
+    setMsg(player ? "Player 2" : "Player 1");
+    if (ifWinner()) {
+      setMsg(msg + " GAVE OVER!!");
+    }
+  }, [board]);
+
+  const ifWinner = () => {
+    console.log("Boards", board);
+    for (let i = 0; i < board.length; i++) {
+      const temp = board[i].join("");
+      if (temp.includes("XXX") || temp.includes("OOO")) {
         return true;
       }
     }
-    for (let i = 0; i < board1.length; i++) {
+    for (let i = 0; i < board.length; i++) {
       let temp = "";
-      for (let j = 0; j < board1.length; j++) {
-        temp += board1[j][i];
+      for (let j = 0; j < board.length; j++) {
+        temp += board[j][i];
       }
-      if (temp.includes("XXX" || "OOO")) {
+      if (temp.includes("XXX") || temp.includes("OOO")) {
         return true;
       }
     }
   };
-  const [player, setPlayer] = useState(false);
-  const [msg, setMsg] = useState("Player 1");
 
   const handleClick = (row, index) => {
     const temp = [...board];
@@ -38,10 +47,6 @@ const TicTac = () => {
       temp[row][index] = "X";
     } else {
       temp[row][index] = "O";
-    }
-
-    if (ifWinner(temp)) {
-      setMsg("Game over");
     }
 
     setBoard(temp);
